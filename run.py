@@ -48,32 +48,22 @@ def validate_data(values):
             raise ValueError(
                 f"Exactly 6 values required, you provided {len(values)}"
             )
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again")
+    except ValueError as err:
+        print(f"Invalid data: {err}, please try again")
         return False
     
     return True
 
 
-def update_sales_worksheet(data):
+def update_worksheet(data, sheet):
     """
-    Update sales worksheet, add new row with the list data provided
+    Update specified worksheet, add new row with the list data provided
     """
-    print("Updating sales worksheet ... \n")
-    sales_worksheet = SHEET.worksheet("sales")
-    sales_worksheet.append_row(data)
-    print("Sales worksheet updated successfully\n")
-
-
-def update_surplus_worksheet(data):
-    """
-    Update surplus worksheet, add new row with the list data provided
-    """
-    print("Updating surplus worksheet")
-    surplus_worksheet = SHEET.worksheet("surplus")
-    surplus_worksheet.append_row(data)
-    print("Surplus worksheet updated successfully\n")
-
+    print(f"Updating {sheet} worksheet")
+    worksheet_to_update = SHEET.worksheet(sheet)
+    worksheet_to_update.append_row(data)
+    print(f"{sheet.capitalize()} worksheet updated successfully\n")
+    
 
 def calculate_surplus_data(sales_row):
     """
@@ -96,9 +86,9 @@ def main():
     """
     data = get_sales_data()
     sales_data = [int(num) for num in data]
-    update_sales_worksheet(sales_data)
+    update_worksheet(sales_data, "sales")
     new_surplus = calculate_surplus_data(sales_data)
-    update_surplus_worksheet(new_surplus)
+    update_worksheet(new_surplus, "surplus")
 
 
 print("Welcome to Love Sandwiches data automation")
