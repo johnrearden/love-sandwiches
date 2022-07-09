@@ -25,12 +25,12 @@ def main():
     board = create_board(60, 22)
     output = stringify_board(board)
     print(output)
-    for i in range(1, 10):
+    for i in range(1, 60):
         board[i] = '%'
         board[i - 1] = '.'
         output = stringify_board(board)
         print(output)
-        time.sleep(0.1)
+        time.sleep(1)
 
 
 print("Welcome to Love Sandwiches data automation")
