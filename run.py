@@ -22,7 +22,7 @@ def main():
     """
     Run all program functions
     """
-    board = create_board(60, 23)
+    board = create_board(60, 22)
     output = stringify_board(board)
     print(output)
     for i in range(1, 10):
