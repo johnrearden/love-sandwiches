@@ -8,7 +8,7 @@ def create_board(width, height):
     board = []
     for ind in range(width * height):
         board.append('.')
-        if ind % width == 0:
+        if ind % width == 0 and ind > 0:
             board.append('=\n')
     return board
     
@@ -26,7 +26,7 @@ def main():
     output = stringify_board(board)
     print(output)
     for i in range(1, 10):
-        board[i] = '*'
+        board[i] = '%'
         board[i - 1] = '.'
         output = stringify_board(board)
         print(output)
